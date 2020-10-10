@@ -78,11 +78,12 @@
   <script type="text/javascript">
     $(document).ready(function () {
 
-      // Your code here...
+      //Click handler for all number buttons
       $(".number").click(function (e) {
-        var operator = $("#operator").text();
-        var result = $("#result").text();
+        const operator = $("#operator").text();
+        const result = $("#result").text();
 
+        //Check if operator and result haven't been populated
         if (!operator && !result) {
           $("#first-number").append($(this).val());
         } else if (!result) {
@@ -90,22 +91,26 @@
         }
       });
 
+      //Click handler for all operator symbols
       $(".operator").click(function (e) {
-        var firstNum = $("#first-number").text();
-        var result = $("#result").text();
+        const firstNum = $("#first-number").text();
+        const result = $("#result").text();
 
-        //on if they've entered a number
+        //Only update operator if they've entered a number first
         if (firstNum) {
           $("#operator").text($(this).text());
           $("#operator").val($(this).val());
         }
       });
 
+      //Click handler for "equals"
       $("#button-equal").click(function (e) {
-        var firstNum = parseInt($("#first-number").text());
-        var secondNum = parseInt($("#second-number").text());
-        var operator = $("#operator").val();
+        //Parse text values to integers before saving the variable
+        const firstNum = parseInt($("#first-number").text());
+        const secondNum = parseInt($("#second-number").text());
+        const operator = $("#operator").val();
 
+        //Check for each operator and apply the correct calculation
         if (firstNum && operator && secondNum) {
           if (operator == "plus") {
             $("#result").text(firstNum + secondNum);
@@ -122,7 +127,7 @@
 
       });
 
-
+      //"Clear all" click handler
       $("#button-clear").click(function (e) {
         $("#first-number, #second-number, #operator, #result").empty();
       });
